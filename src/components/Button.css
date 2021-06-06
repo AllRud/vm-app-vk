@@ -2,9 +2,6 @@
   display: inline-block;
 }
 
-.label-btn, .label-sel {
-  margin: 1rem 0 0;
-}
 
 .btn, .sel {
   display: inline-block;
