@@ -1,0 +1,31 @@
+.ib {
+  display: inline-block;
+}
+
+.label-btn, .label-sel {
+  margin: 1rem 0 0;
+}
+
+.btn, .sel {
+  display: inline-block;
+  height: 36px;
+  max-width: 30vw;
+  font-size: 16px;
+  padding: 0 2rem;
+  margin: 1rem 0.5rem;
+  line-height: 36px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .5px;
+  color: #fff;
+  background-color: #6383a8;
+  outline: 0;
+  border: none;
+  border-radius: 2px;
+  transition: .2s ease-out;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #6d8cb0
+}
