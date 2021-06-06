@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setSelectItemActive } from '../actions/SelectActions'
 import { Select } from '../components/Select'
-//import modulesList from '../utils/modules'
 import { AppModeContext } from '../components/App-context'
 
 class SelectContainer extends React.Component {

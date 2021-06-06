@@ -25,12 +25,6 @@ class App extends Component {
     //     appMode.appCourse:
     //  }));
     //};
-
-    //this.toggleAppMode = () => {
-    //  this.setState((state) => ({
-    //    toggleAppMode: this.toggleAppMode,
-    //  }))
-    //};
   }
 
   componentDidUpdate() {
