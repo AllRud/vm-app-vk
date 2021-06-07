@@ -1,82 +1,76 @@
-//import React, { Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom'
-//import { ListItem } from 'react-native-elements'
+import React, { Component } from 'react'
 import UserContainer from '../containers/UserContainer'
+//import SelectContainer from '../containers/SelectContainer'
+import Select from './Select'
 import ButtonContainer from '../containers/ButtonContainer'
 import coursesList from '../utils/courses'
 import modulesList from '../utils/modules'
 import { requestCreate } from '../utils/requests'
 import { requestLoad } from '../utils/requests'
+//import { appMode, AppModeContext } from '../components/App-context'
 
 import '../containers/Reset.css'
 import './App.css'
 import './Сhoice-actions.css'
 
-export default function ParamsExample() {
-  return (
-    <Router>
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.handlActivCourseChange = this.handlActivCourseChange.bind(this)
+    this.handlActivModuleChange = this.handlActivModuleChange.bind(this)
+    this.state = {
+      courseActive: '',
+      moduleActive: '',
+    }
+  }
+
+  handlActivCourseChange(value) {
+    this.setState({ courseActive: value })
+  }
+
+  handlActivModuleChange(value) {
+    this.setState({ moduleActive: value })
+  }
+
+  render() {
+    const msgCourse = this.state.courseActive
+    const msgModule = this.state.moduleActive
+
+    return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title"> Courses</h1>
-          <Switch>
-            <Route path="/:id" children={<Child />} />
-          </Switch>
+          <div>
+            <p>Выбран курс: {msgCourse.value}</p>
+            <p>Выбран модуль: {msgModule.value}</p>
+          </div>
           <UserContainer />
         </header>
         <div className="Choice-actions">
-          <ul className="topmenu">
-            <li className="down">
-              <span className="label-sel"> Курс</span>
-              <RenderOptions listItems={coursesList} />
-            </li>
-
-            <li className="down">
-              <span className="label-sel">Модуль:</span>
-              <RenderOptions listItems={modulesList} />
-            </li>
-          </ul>
-
+          <Select
+            selectList={coursesList}
+            labelButton={'Выберите курс:'}
+            onSelActivItemChange={this.handlActivCourseChange}
+          />
+          <Select
+            selectList={modulesList}
+            labelButton={'Выберите модуль:'}
+            onSelActivItemChange={this.handlActivModuleChange}
+          />
           <ButtonContainer
-            n={'Открыть модуль'}
+            n={'Открыть'}
             req={requestLoad[0]}
-            //labelButton={'Открыть модуль'}
+            labelButton={'Открыть модуль'}
           />
           <ButtonContainer
             n={'Новый модуль'}
             req={requestCreate[0]}
-            //labelButton={'Создать модуль'}
+            labelButton={'Создать модуль'}
           />
         </div>
       </div>
-    </Router>
-  )
+    )
+  }
 }
-//let selectList = { coursesList }
-//list={ coursesList}
 
-const RenderOptions = ({ listItems }) => (
-  <ul className="submenu">
-    {listItems.map((item) => (
-      <li key={item.toString()}>
-        <Link to={item}> {item}</Link>
-      </li>
-    ))}
-  </ul>
-)
-
-function Child({ list }) {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams()
-  return (
-    <div>
-      <h3> {id}</h3>
-    </div>
-  )
-}
+export default App

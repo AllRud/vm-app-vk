@@ -1,3 +1,3 @@
-const modulesList = ['Текст', 'Вопросник', 'Проверочный блок']
+const modulesList = ['', 'Текст', 'Вопросник', 'Проверочный блок']
 
 export default modulesList

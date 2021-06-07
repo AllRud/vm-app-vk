@@ -4,5 +4,9 @@ select.sel {
   letter-spacing: .5px;
   cursor: pointer;
   margin: 1rem;
-  background-color: lavender;
+  background-color: #6383a8;
+}
+
+.sel option:first-child {
+  display: none;
 }

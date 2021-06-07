@@ -1,39 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-//import './Select.css'
-import { AppModeContext } from '../components/App-context'
+import './Select.css'
 
 export class Select extends React.Component {
-  //constructor(props) {
-  //  super()
-  //const selectItemActive = ''
-  // }
-
-  componentDidMount() {
-    let itemId = this.props.id
-    this.setState((state) => ({
-      itemId: itemId,
-    }))
+  constructor(props) {
+    super(props)
+    this.state = { value: '' }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   selectList = this.props.selectList
 
-  setSelectItemActive(e) {
-    const selectItemActive = e.target.value
-    //const item = e.target.id
-    console.log(e.target.value, selectItemActive)
-    this.props.setSelectItemActive(selectItemActive)
-    this.setState((state) => ({
-      activeItem: selectItemActive,
-    }))
-    switch (e.target.id) {
-      case 'coursesList':
-        this.context.appCourse = selectItemActive
-        break
-      default:
-        this.context.appModule = selectItemActive
-        break
-    }
+  handleChange(e) {
+    this.props.onSelActivItemChange({ value: e.target.value })
+    this.setState({ value: e.target.value })
   }
 
   renderOptions() {
@@ -48,32 +27,19 @@ export class Select extends React.Component {
 
   render() {
     const labelButton = this.props.labelButton
-    const id = this.props.id
     return (
-      //<AppModeContext.Consumer>
-      //  {({ appMode, toggleAppMode }) => (
       <div>
         <div className="label-sel">{labelButton}</div>
         <select
-          id={id}
+          value={this.state.value}
           className="sel"
-          onChange={(e) => this.setSelectItemActive(e)}
+          onChange={(e) => this.handleChange(e)}
         >
           {this.renderOptions()}
         </select>
       </div>
-      //  )}
-      // </AppModeContext.Consumer>
     )
   }
 }
 
-Select.contextType = AppModeContext
-
-Select.propTypes = {
-  selectItemActive: PropTypes.string.isRequired,
-  setSelectItemActive: PropTypes.func.isRequired,
-  selectList: PropTypes.array.isRequired,
-  labelButton: PropTypes.string,
-  id: PropTypes.string.isRequired,
-}
+export default Select
