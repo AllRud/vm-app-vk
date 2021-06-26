@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './Button.css'
 
 export function Button(props) {
-  const { requestInfo, isFetching } = props
+  const { isFetching } = props
 
   function onBtnClick(e) {
     const querry = props.querry
@@ -13,8 +13,6 @@ export function Button(props) {
   let msg
   if (isFetching) {
     msg = <p>Loading</p>
-  } else {
-    msg = <div>{requestInfo}</div>
   }
 
   const labelButton = props.labelButton

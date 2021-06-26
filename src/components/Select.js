@@ -1,5 +1,6 @@
 import React from 'react'
 import './Select.css'
+import PropTypes from 'prop-types'
 
 export class Select extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export class Select extends React.Component {
   selectList = this.props.selectList
 
   handleChange(e) {
-    this.props.onSelActivItemChange({ value: e.target.value })
+    this.props.setSelectItemActive(e.target.value, this.props.id)
     this.setState({ value: e.target.value })
   }
 
@@ -40,6 +41,11 @@ export class Select extends React.Component {
       </div>
     )
   }
+}
+
+Select.propTypes = {
+  id: PropTypes.string.isRequired,
+  setSelectItemActive: PropTypes.func.isRequired,
 }
 
 export default Select

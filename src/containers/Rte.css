@@ -1,0 +1,35 @@
+.Rtl-editor {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2vw;
+}
+
+.Rtl-editor>div{
+  flex-basis: 48vw;
+  height: 50vh;
+  border: 2px solid;
+  padding-bottom: 0.5rem;
+
+}
+
+.Rtl-editor > div:last-child {
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border-left: 1px solid;
+  overflow-y: scroll;
+}
+
+.Rtl-editor > div:first-child {
+  overflow-y: scroll;
+  border-right: 1px solid;
+}
+
+.Rtl-editor > div:first-child > div:first-child{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10000;
+}
+
+.mathText {
+  overflow-y: scroll;
+}

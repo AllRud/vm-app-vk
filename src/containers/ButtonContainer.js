@@ -14,7 +14,6 @@ function ButtonContainer(props) {
     case 'Открыть':
       requestInfo1 = buttonLoad.requestInfo
       getInfo1 = getInfo
-      isFetching1 = buttonLoad.isFetching
       break
 
     default:
@@ -36,7 +35,7 @@ function ButtonContainer(props) {
   )
 }
 const mapStateToProps = (store) => {
-  console.log(store.buttonLoad)
+  console.log('Cont button', store.buttonLoad)
   return {
     buttonLoad: store.buttonLoad,
     buttonCreate: store.buttonCreate,
